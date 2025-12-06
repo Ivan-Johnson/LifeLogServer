@@ -2,7 +2,8 @@
 
 let
 	lls = import ./derivation.nix { inherit pkgs; };
-in {
+in
+{
 	config = {
 
 		# NOTE: LLS does have a `/etc/lifelogserver/server.cfg`
@@ -13,11 +14,9 @@ in {
 		#
 		# [1]: https://flask.palletsprojects.com/en/3.0.x/config/#SECRET_KEY
 
-		environment.systemPackages = with pkgs; [
-			lls
-		];
+		environment.systemPackages = with pkgs; [ lls ];
 
-		users.groups.lls = {};
+		users.groups.lls = { };
 
 		users.users.lls = {
 			isSystemUser = true;
@@ -26,14 +25,14 @@ in {
 		};
 
 		systemd.services."lifelog_server" = {
-				description = "Lifelog server";
-				wantedBy = [ "default.target" ];
-				serviceConfig = {
-					Type = "exec";
-					ExecStart = "${lls}/bin/lifelogserver start";
-					User="lls";
-					Group="lls";
-				};
+			description = "Lifelog server";
+			wantedBy = [ "default.target" ];
+			serviceConfig = {
+				Type = "exec";
+				ExecStart = "${lls}/bin/lifelogserver start";
+				User = "lls";
+				Group = "lls";
+			};
 		};
 	};
 }

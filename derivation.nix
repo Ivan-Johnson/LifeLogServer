@@ -7,6 +7,9 @@ in python3Packages.buildPythonApplication rec {
 	pname = "lifelogserver";
 	version = "0.8.0a0.dev0"; # TODO: de-dupe. Somehow. Or at least write a unit test?
 
+	pyproject = true;
+	build-system = [ python3Packages.setuptools ];
+
 	src = ./src;
 
 	# These should be available at buildtime

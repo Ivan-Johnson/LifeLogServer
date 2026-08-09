@@ -115,5 +115,7 @@
 					};
 				};
 			};
+
+			static_website = ./src/WebStatic;
 		};
 }

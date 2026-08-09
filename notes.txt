@@ -1,0 +1,34 @@
+TODO:
+* Find a "rest client" (?); try:
+  * httpie
+  * curlie
+  * not in arch repos:
+    * http prompt
+    * IIRC I used to use these:
+      * insomnia
+      * postman
+
+
+* curl --header token:dev-key -d @Tests/Images/receipt.jpeg 127.0.0.1:5000/api/v1/finances/purchases
+
+
+
+
+* next:
+  * convert to systemd service, run on olympus
+  * start collecting the per-minute data
+    (will be v. useful for ML?)
+  * hyperparams
+  * brute force optimize hypers
+  * create scatterplots of weekly data, trying to figure out if it actually works.
+    something like:
+      loop 20 times:
+         pick random item
+	 look at last 10 weeks of data
+	 take hourly averages
+	 create scatter plot of:
+	 * x-axis: # hours since midnight sunday that week
+	 * y-axis: hourly average
+
+    in *addition* to viewing the graph, also compute the r^2/whatever metric to
+    see how correlated the data are

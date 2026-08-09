@@ -12,8 +12,7 @@
 			};
 		in
 		{
-			# TODO: fix my git hook. It's really dumb that I have to do this.
-			packages.x86_64-linux.default = pkgs.hello;
+			packages.x86_64-linux.default = import ./derivation.nix { inherit pkgs; };
 
 			devShells.${pkgs.stdenv.hostPlatform.system}.default = pkgs.mkShell {
 				buildInputs = with pkgs; [
